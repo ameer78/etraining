@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 
 const initialToDos = [
   {
@@ -20,14 +20,17 @@ const initialToDos = [
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "add":
+        return [...state, action.item]
     case "complete":
-      return state.map((item) => {
-        if (item.id === action.id) {
-          return { ...item, status: "completed" };
-        } else {
-          return item;
-        }
-      });
+    //   return state.map((item) => {
+    //     if (item.id === action.id) {
+    //       return { ...item, status: "completed" };
+    //     } else {
+    //       return item;
+    //     }
+    //   });
+        return state.filter(item => item.id !== action.id);
     default:
       return state;
   }
@@ -36,12 +39,25 @@ const reducer = (state, action) => {
 const ToDoList = () => {
   const [toDoList, dispatch] = useReducer(reducer, initialToDos);
   //   text-decoration: line-through;
+  const [addedItem, setAddedItem] = useState("");
   const handleChecked = (item) => {
     dispatch({ type: "complete", id: item.id });
   };
 
+  const addItem = () => {
+    dispatch({type: "add", item: {
+        id: "a" + Math.floor(Math.random() * 1300),
+        text: addedItem,
+        status: "progressing"
+    }})
+  }
+
   return (
     <div>
+        <div>
+            <input value={addedItem} onInput={(e)=>setAddedItem(e.target.value)} />
+            <button onClick={() => addItem()}>Add</button>
+        </div>
       {toDoList &&
         toDoList.map((item) => (
           <div key={item.id}>
