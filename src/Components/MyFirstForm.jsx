@@ -1,67 +1,57 @@
 import { useState } from "react";
-
+import { Formik } from 'formik';
+import { SignupSchema } from "./validations";
 
 // TODO:: refactor validation
 const MyFirstForm = () => {
   // Fields: first name, last name, email, password, confirm password, address.
-  const [inputs, setInputs] = useState({});
-  const [validationMsg, setValidationMsg] = useState("");
-
-
-  const handleChange = (e) => {
-    const inputValue = e.target.value;
-    const name = e.target.name;
-    setInputs(values => ({...values, [name]: inputValue}))
-  };
-
-  const validate = () => {
-    let valid = true;
-    const {firstName, lastName, email, password, confirmPass, address} = inputs;
-    if (!firstName && !firstName.trim()) {
-      valid = false;
-      setValidationMsg("first Name is required");
-    } else if (!lastName && !lastName.trim()) {
-      setValidationMsg("last Name is required");
-      valid = false;
-    } else if (!email || !email.trim()) {
-      setValidationMsg("email is required");
-      valid = false;
-    } else if (!email.includes("@")) {
-      valid = false;
-      setValidationMsg("email is not valid");
-    } else if (!password.trim()) {
-      setValidationMsg("password is required");
-      valid = false;
-    } else if (password.length < 6) {
-      setValidationMsg("password should be longer than 6");
-      valid = false;
-    } else if (!confirmPass.trim()) {
-      setValidationMsg("confirm password is required");
-      valid = false;
-    } else if (confirmPass !== password) {
-      setValidationMsg("password does not match");
-      valid = false;
-    } else if (!address.trim()) {
-      setValidationMsg("address is required");
-      valid = false;
-    }
-
-    return valid;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validate()) {
-      alert("You Are Done");
-    } else {
-      return;
-    }
-  };
 
   return (
     <div>
-      <div>{validationMsg}</div>
-      <form onSubmit={handleSubmit}>
+      <Formik
+       initialValues={{ email: '', password: '' }}
+       validationSchema={SignupSchema}
+       onSubmit={(values, { setSubmitting }) => {
+         setTimeout(() => {
+           alert(JSON.stringify(values, null, 2));
+           setSubmitting(false);
+         }, 400);
+       }}
+     >
+       {({
+         values,
+         errors,
+         touched,
+         handleChange,
+         handleBlur,
+         handleSubmit,
+         isSubmitting,
+         /* and other goodies */
+       }) => (
+         <form onSubmit={handleSubmit}>
+           <input
+             type="email"
+             name="email"
+             onChange={handleChange}
+             onBlur={handleBlur}
+             value={values.email}
+           />
+           {errors.email && touched.email && errors.email}
+           <input
+             type="password"
+             name="password"
+             onChange={handleChange}
+             onBlur={handleBlur}
+             value={values.password}
+           />
+           {errors.password && touched.password && errors.password}
+           <button type="submit" disabled={isSubmitting}>
+             Submit
+           </button>
+         </form>
+       )}
+     </Formik>
+      {/* <form onSubmit={handleSubmit}>
         <div>
           <label for="firstName">first Name</label>
           <input
@@ -127,7 +117,7 @@ const MyFirstForm = () => {
         </div>
 
         <input type="submit" value="submit" />
-      </form>
+      </form> */}
     </div>
   );
 };

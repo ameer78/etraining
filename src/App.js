@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import "./App.css"
+import MyFirstForm from "./Components/MyFirstForm";
 import ReducerAndState from "./Components/ReducerAndState";
 import ToDoList from "./Components/ToDoList";
 import WrapperComp from "./Components/WrapperComp";
@@ -20,7 +21,8 @@ const App = () => {
     }  >
         {/* <WrapperComp /> */}
         {/* <ToDoList/> */}
-        <ReducerAndState />
+        {/* <ReducerAndState /> */}
+        <MyFirstForm />
     </AppContext.Provider>
 }
    
