@@ -2,6 +2,7 @@ import React, { createContext, useState } from "react";
 import "./App.css"
 import MyFirstForm from "./Components/MyFirstForm";
 import ReducerAndState from "./Components/ReducerAndState";
+import SimpleToDolist from "./Components/SimpleToDolist";
 import TestRef from "./Components/TestRef";
 import TestUseCAllBackHook from "./Components/TestUseCAllBackHook";
 import ToDoList from "./Components/ToDoList";
@@ -28,7 +29,8 @@ const App = () => {
         {/* <MyFirstForm /> */}
         {/* <TestRef /> */}
         {/* <TestUseCAllBackHook /> */}
-        <UseMemoExample />
+        {/* <UseMemoExample /> */}
+        <SimpleToDolist />
     </AppContext.Provider>
 }
    

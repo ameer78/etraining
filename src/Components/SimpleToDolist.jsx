@@ -3,17 +3,17 @@
 
 
 import { useState, useEffect, useRef } from "react";
+import useFetch from "./useFetch";
 
 const SimpleToDolist = (props) => {
-const {addToDo, todoList} = props
-useEffect(()=>{
-    console.log("rendered")
-},[addToDo])
+  const [limit,  setLimit] = useState("10");
+  const [page,  setPage] = useState("1");
+  const todoList = useFetch(`https://jsonplaceholder.typicode.com/todos?_page=${page}&_limit=${limit}`)
 
   return (
     <>
-    {todoList && todoList.map(item => <div>item</div>)}
-    <button onClick={addToDo}> add to do</button>
+    <input value={page} onInput={(e) => setPage(e.target.value)} />
+    {todoList && todoList.map(item => <div>{item.title}</div>)}
     </>
   );
 }
