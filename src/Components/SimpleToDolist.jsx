@@ -7,13 +7,25 @@ import useFetch from "./useFetch";
 
 const SimpleToDolist = (props) => {
   const [limit,  setLimit] = useState("10");
+  const [search,  setSearch] = useState("");
   const [page,  setPage] = useState("1");
-  const todoList = useFetch(`https://jsonplaceholder.typicode.com/todos?_page=${page}&_limit=${limit}`)
+  const [list, setList] = useState([])
+  let todoList = useFetch(`https://reqres.in/api/users?page=${page}`)
+
+ 
+  useEffect(()=>{
+    setList(todoList);
+  },[todoList])
+  
+  useEffect(()=>{
+    setList(todoList.filter(item => item.first_name.includes(search)));
+  },[search])
 
   return (
     <>
     <input value={page} onInput={(e) => setPage(e.target.value)} />
-    {todoList && todoList.map(item => <div>{item.title}</div>)}
+    <input value={search} onInput={(e) => setSearch(e.target.value)} />
+    {list && list.map(item => <div>{item.id} and {item.first_name}</div>)}
     </>
   );
 }

@@ -6,7 +6,7 @@ const useFetch = (url) => {
     const fetchData = async () => {
         const response = await fetch(url);
         const arrRecords = await response.json();
-        setFetchedArr(arrRecords)
+        setFetchedArr(arrRecords.data)
     }
 
     useEffect(()=> {
