@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 
 const UseMemoExample = () => {
   const [count, setCount] = useState(0);
+  const [cVal, setCVal] = useState(0);
   const [todos, setTodos] = useState([]);
   const calculation = useMemo(() => expensiveCalculation(count), [count]);
 
@@ -25,7 +26,8 @@ const UseMemoExample = () => {
       <hr />
       <div>
         Count: {count}
-        <button onClick={increment}>+</button>
+        <input value={cVal}  onInput={(e) => setCVal(e.target.value)}/>
+        <button onClick={() => setCount(parseInt(cVal))}>set</button>
         <h2>Expensive Calculation</h2>
         {calculation}
       </div>
