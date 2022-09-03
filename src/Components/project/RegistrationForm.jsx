@@ -8,7 +8,7 @@ const RegistrationForm = () => {
   return (
     <div>
       <Formik
-        initialValues={{ firstName: "", lastName: "", email: "", password: "" }}
+        initialValues={{ firstName: "", lastName: "", email: "", password: "", username: ""}}
         validationSchema={RegistrationSchema}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
