@@ -6,8 +6,8 @@ const App = () => {
     <div>
       {/*     <MyFirstForm /> */}
       {/* <UseMemoExample /> */}
-     {/*  <NewFetch/> */}
-      <LoginForm/>
+      {/*  <NewFetch/> */}
+      <LoginForm />
     </div>
   );
 };

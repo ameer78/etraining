@@ -1,7 +1,37 @@
-.Button {
-    padding: 20px;
+.my-login-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+  padding: 12px;
+  margin: auto;
 }
-.form {
-    margin: 0 auto;
-    width: 250px;
+
+.my-login-form input {
+  padding: 6px;
+}
+
+.my-input {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 4px;
+}
+
+.my-input-label {
+  padding-bottom: 4px;
+}
+
+.err {
+  font-size: 12px;
+  color: red;
+}
+.err-wappwer {
+  display: flex;
+}
+.submit-btn {
+  padding: 6px;
+  margin-top: 4px;
+  background: #4caf50;
+  border: 0;
+  border-radius: 2px;
+  color: white;
 }
