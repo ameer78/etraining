@@ -69,7 +69,6 @@ const MyFirstForm = () => {
             name="lastName"
             value={inputs.lastName}
             onInput={handleChange}
-
           />
           <br />
         </div>
@@ -115,7 +114,6 @@ const MyFirstForm = () => {
           />
           <br />
         </div>
-
         <input type="submit" value="submit" />
       </form> */}
     </div>
