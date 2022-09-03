@@ -5,6 +5,9 @@
   padding: 12px;
   margin: auto;
 }
+.all{
+    background-color: #E4E4FC;
+}
 
 .my-login-form input {
   padding: 6px;

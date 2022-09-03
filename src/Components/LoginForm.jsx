@@ -7,7 +7,7 @@ import "../login.css";
 const LoginForm = () => {
   // Fields: Email , Password
  return (
-   <div>
+   <div className="all">
      <Formik
        initialValues={{ email: "", password: "" }}
        validationSchema={SignupSchema}
