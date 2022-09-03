@@ -12,3 +12,12 @@ export const RegistrationSchema = Yup.object().shape({
     .max(20, "Too Long!")
     .required("Password is Required"),
 });
+
+
+export const SignInSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Please Enter Email"),
+  password: Yup.string()
+    .min(6, "Too Short!")
+    .max(20, "Too Long!")
+    .required("Please Enter Your Password"),
+});

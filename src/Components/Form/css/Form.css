@@ -1,9 +1,8 @@
-.reg-form {
+.form {
     display: flex;
     flex-direction: column;
-    max-width: 410px;
+    min-width: 320px;
     padding: 12px;
-    margin: auto;
 }
 
 .input-form {
@@ -15,7 +14,7 @@
     padding: 6px;
 }
 
-.input-form lable {
+.input-form label {
     padding-bottom: 4px;
 }
 

@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Formik } from "formik";
-import { RegistrationSchema } from "./RegistrationSchema";
-import "./RegistrationForm.css";
-const RegistrationForm = () => {
-  // Fields: first name, last name, email, password, confirm password, address.
+import "../css/Form.css";
+import {RegistrationSchema} from "../Validation/FormSchema";
 
+const RegistrationForm = () => {
   return (
-    <div>
+   
       <Formik
         initialValues={{ firstName: "", lastName: "", email: "", password: "", username: ""}}
         validationSchema={RegistrationSchema}
@@ -27,8 +26,8 @@ const RegistrationForm = () => {
           isSubmitting,
           /* and other goodies */
         }) => (
-          <form onSubmit={handleSubmit} className="reg-form">
-            <h2>Registration Form</h2>
+          <form onSubmit={handleSubmit} className="form">
+            <h2>Sign up</h2>
             <div className="input-form">
               <label for="firstName">First Name</label>
               <input
@@ -133,7 +132,7 @@ const RegistrationForm = () => {
           </form>
         )}
       </Formik>
-    </div>
+ 
   );
 };
 

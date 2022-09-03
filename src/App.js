@@ -1,8 +1,8 @@
 import React, { createContext, useState } from "react";
 import "./App.css";
-import RegistrationForm from "./Components/project/RegistrationForm";
+import LoginForm from "./Components/Form/LoginForm/LoginForm";
+import RegistrationForm from "./Components/Form/RegistrationForm/RegistrationForm";
 
-import LoginForm from "./Components/LoginForm";
 
 export const AppContext = createContext();
 const App = () => {
@@ -18,8 +18,8 @@ const App = () => {
       }}
     >
       <div className="login-page">
-        <RegistrationForm />
-        <LoginForm />
+       <RegistrationForm />
+       <LoginForm />
       </div>
     </AppContext.Provider>
   );
