@@ -28,10 +28,11 @@ const RegistrationForm = () => {
           /* and other goodies */
         }) => (
           <form onSubmit={handleSubmit} className="reg-form">
+            <h2>Registration Form</h2>
             <div className="input-form">
               <label for="firstName">First Name</label>
               <input
-                type="firstName"
+                type="text"
                 name="firstName"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -48,7 +49,7 @@ const RegistrationForm = () => {
             <div className="input-form">
               <label for="lastName">Last Name</label>
               <input
-                type="lastName"
+                type="text"
                 name="lastName"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -62,17 +63,17 @@ const RegistrationForm = () => {
             </div>
 
             <div className="input-form">
-              <label for="email">Email</label>
+              <label for="username">Username</label>
               <input
-                type="email"
-                name="email"
+                type="text"
+                name="username"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.email}
+                value={values.username}
               />
               <div className="error-wrapper">
                 <span className="error">
-                  {errors.email && touched.email && errors.email}
+                  {errors.username && touched.username && errors.username}
                 </span>
               </div>
             </div>
@@ -92,6 +93,40 @@ const RegistrationForm = () => {
                 </span>
               </div>
             </div>
+
+
+            <div className="input-form">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+              />
+              <div className="error-wrapper">
+                <span className="error">
+                  {errors.email && touched.email && errors.email}
+                </span>
+              </div>
+            </div>
+
+            <div className="input-form">
+              <label for="mobile">Mobile No</label>
+              <input
+                type="text"
+                name="mobile"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.mobile}
+              />
+              <div className="error-wrapper">
+                <span className="error">
+                  {errors.mobile && touched.mobile && errors.mobile}
+                </span>
+              </div>
+            </div>
+          
             <button type="submit" className="submit-btn" disabled={isSubmitting}>
               Register
             </button>

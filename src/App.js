@@ -20,7 +20,7 @@ const App = () => {
         {/* <WrapperComp /> */}
         {/* <ToDoList/> */}
         {/* <ReducerAndState /> */}
-        <MyFirstForm />
+        {/* <MyFirstForm /> */}
         {/* <TestRef /> */}
         {/* <TestUseCAllBackHook /> */}
         {/* <UseMemoExample /> */}
