@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Formik } from 'formik';
+import { Formik } from "formik";
 import { SignupSchema } from "./validations";
-
+import "./MyFirstForm.css";
 // TODO:: refactor validation
 const MyFirstForm = () => {
   // Fields: first name, last name, email, password, confirm password, address.
@@ -9,48 +9,63 @@ const MyFirstForm = () => {
   return (
     <div>
       <Formik
-       initialValues={{ email: '', password: '' }}
-       validationSchema={SignupSchema}
-       onSubmit={(values, { setSubmitting }) => {
-         setTimeout(() => {
-           alert(JSON.stringify(values, null, 2));
-           setSubmitting(false);
-         }, 400);
-       }}
-     >
-       {({
-         values,
-         errors,
-         touched,
-         handleChange,
-         handleBlur,
-         handleSubmit,
-         isSubmitting,
-         /* and other goodies */
-       }) => (
-         <form onSubmit={handleSubmit}>
-           <input
-             type="email"
-             name="email"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.email}
-           />
-           {errors.email && touched.email && errors.email}
-           <input
-             type="password"
-             name="password"
-             onChange={handleChange}
-             onBlur={handleBlur}
-             value={values.password}
-           />
-           {errors.password && touched.password && errors.password}
-           <button type="submit" disabled={isSubmitting}>
-             Submit
-           </button>
-         </form>
-       )}
-     </Formik>
+        initialValues={{ email: "", password: "" }}
+        validationSchema={SignupSchema}
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+            setSubmitting(false);
+          }, 400);
+        }}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          /* and other goodies */
+        }) => (
+          <form className="my-first-form" onSubmit={handleSubmit}>
+            <div className="my-input">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+              />
+              <div className="err-wrapper">
+                <span className="err">{errors.email && touched.email && errors.email}</span>
+              </div>
+            </div>
+            <div className="my-input">
+              <label for="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                name="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+              />
+              <div className="err-wrapper">
+                <span className="err">
+                  {errors.password && touched.password && errors.password}
+                </span>
+              </div>
+            </div>
+
+            <button type="submit" className="submit-btn" disabled={isSubmitting}>
+              Submit
+            </button>
+          </form>
+        )}
+      </Formik>
       {/* <form onSubmit={handleSubmit}>
         <div>
           <label for="firstName">first Name</label>
