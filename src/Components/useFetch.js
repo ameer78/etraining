@@ -9,6 +9,7 @@ const useFetch = (url) => {
         setFetchedArr(arrRecords.data)
     }
 
+    
     useEffect(()=> {
         fetchData();
     }, [url])
