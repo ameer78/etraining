@@ -2,10 +2,7 @@ import { useState } from "react";
 import { Formik } from 'formik';
 import { SignupSchema } from "./validations";
 
-// TODO:: refactor validation
 const MyFirstForm = () => {
-  // Fields: first name, last name, email, password, confirm password, address.
-
   return (
     <div>
       <Formik

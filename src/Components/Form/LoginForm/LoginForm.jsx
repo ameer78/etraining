@@ -1,16 +1,13 @@
 import { Formik } from "formik";
-import { SignupSchema } from "./validation";
-import "../login.css";
-
-// TODO:: refactor validation
+import '../css/Form.css'
+import {SignInSchema} from "../Validation/FormSchema"
 
 const LoginForm = () => {
-  // Fields: Email , Password
  return (
-   <div className="all">
+
      <Formik
        initialValues={{ email: "", password: "" }}
-       validationSchema={SignupSchema}
+       validationSchema={SignInSchema}
        onSubmit={(values, { setSubmitting }) => {
          setTimeout(() => {
            alert(JSON.stringify(values, null, 2));
@@ -28,8 +25,9 @@ const LoginForm = () => {
          isSubmitting,
          /* and other goodies */
        }) => (
-         <form className="my-login-form" onSubmit={handleSubmit}>
-           <div className="my-input">
+         <form className="form" onSubmit={handleSubmit}>
+          <h2>Sign In</h2>
+           <div className="input-form">
              <label for="email">Email</label>
              <input
                type="email"
@@ -39,13 +37,13 @@ const LoginForm = () => {
                onBlur={handleBlur}
                value={values.email}
              />
-             <div className="err-wrapper">
-               <span className="err">
+             <div className="error-wrapper">
+               <span className="error">
                  {errors.email && touched.email && errors.email}
                </span>
              </div>
            </div>
-           <div className="my-input">
+           <div className="input-form">
              <label for="password">Password</label>
              <input
                id="password"
@@ -55,8 +53,8 @@ const LoginForm = () => {
                onBlur={handleBlur}
                value={values.password}
              />
-             <div className="err-wrapper">
-               <span className="err">
+             <div className="error-wrapper">
+               <span className="error">
                  {errors.password && touched.password && errors.password}
                </span>
              </div>
@@ -68,7 +66,7 @@ const LoginForm = () => {
          </form>
        )}
      </Formik>
-   </div>
+
  );
 };
 

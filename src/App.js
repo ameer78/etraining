@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 import "./App.css";
-import RegistrationForm from "./Components/project/RegistrationForm";
-import LoginForm from "./Components/LoginForm";
+import LoginForm from "./Components/Form/LoginForm/LoginForm";
+import RegistrationForm from "./Components/Form/RegistrationForm/RegistrationForm";
 import Footer from "./Components/Footer/Footer";
 
 export const AppContext = createContext();
@@ -18,8 +18,8 @@ const App = () => {
       }}
     >
       <div className="login-page">
-        <RegistrationForm />
-        <LoginForm />
+       <RegistrationForm />
+       <LoginForm />
       </div>
       <div>
         <Footer />
