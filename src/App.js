@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import "./App.css";
 import LoginForm from "./Components/Form/LoginForm/LoginForm";
 import RegistrationForm from "./Components/Form/RegistrationForm/RegistrationForm";
-
+import Footer from "./Components/Footer/Footer";
 
 export const AppContext = createContext();
 const App = () => {
@@ -20,6 +20,9 @@ const App = () => {
       <div className="login-page">
        <RegistrationForm />
        <LoginForm />
+      </div>
+      <div>
+        <Footer />
       </div>
     </AppContext.Provider>
   );
