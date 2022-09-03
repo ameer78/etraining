@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Formik } from "formik";
 import "../css/Form.css";
-import {RegistrationSchema} from "../Validation/FormSchema";
+import {RegistrationSchema} from "../validation/FormSchema";
 
 const RegistrationForm = () => {
   return (

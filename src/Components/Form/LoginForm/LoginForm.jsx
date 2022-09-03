@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import '../css/Form.css'
-import {SignInSchema} from "../Validation/FormSchema"
+import {SignInSchema} from "../validation/FormSchema"
 
 const LoginForm = () => {
  return (
