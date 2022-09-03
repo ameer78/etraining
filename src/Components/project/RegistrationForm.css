@@ -1,0 +1,38 @@
+.reg-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 410px;
+    padding: 12px;
+    margin: auto;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 4px;
+}
+.input-form input{
+    padding: 6px;
+}
+
+.input-form lable {
+    padding-bottom: 4px;
+}
+
+.error {
+    font-size: 12px;
+    color: red;
+}
+
+.error-wrapper {
+    display: flex;
+}
+
+.submit-btn {
+    padding: 6px;
+    margin-top: 4px;
+    background: #4CAF50;
+    border: 0px;
+    border-radius: 2px;
+    color: white;
+}
