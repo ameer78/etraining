@@ -11,6 +11,10 @@
     flex-direction: column;
     padding-bottom: 4px;
 }
+.input-form input{
+    padding: 6px;
+}
+
 .input-form lable {
     padding-bottom: 4px;
 }
