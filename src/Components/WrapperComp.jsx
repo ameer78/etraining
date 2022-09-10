@@ -1,13 +1,13 @@
-import React, { Component } from "react";
 import AvgComp from "./AvgComp";
-import PointsComp from "./PointsComp";
-const WrapperComp = () => {
-  return (
-    <div>
-      <PointsComp />
-      <AvgComp />
-    </div>
-  );
-};
+import PointComp from "./pointComp";
 
+
+const WrapperComp = () => {
+    return (
+        <div>
+            <PointComp />
+            <AvgComp />
+        </div>
+    )
+}
 export default WrapperComp;

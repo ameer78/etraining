@@ -2,10 +2,7 @@ import { useState } from "react";
 import { Formik } from 'formik';
 import { SignupSchema } from "./validations";
 
-// TODO:: refactor validation
 const MyFirstForm = () => {
-  // Fields: first name, last name, email, password, confirm password, address.
-
   return (
     <div>
       <Formik
@@ -51,73 +48,6 @@ const MyFirstForm = () => {
          </form>
        )}
      </Formik>
-      {/* <form onSubmit={handleSubmit}>
-        <div>
-          <label for="firstName">first Name</label>
-          <input
-            id="firstName"
-            name="firstName"
-            value={inputs.firstName}
-            onInput={handleChange}
-          />
-          <br />
-        </div>
-        <div>
-          <label for="lastName">last Name</label>
-          <input
-            id="lastName"
-            name="lastName"
-            value={inputs.lastName}
-            onInput={handleChange}
-
-          />
-          <br />
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input
-            id="email"
-            name="email"
-            value={inputs.email}
-            onInput={handleChange}
-          />
-          <br />
-        </div>
-        <div>
-          <label for="password">Password</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            value={inputs.password}
-            onInput={handleChange}
-          />
-          <br />
-        </div>
-        <div>
-          <label for="confirmPass">confirm Password</label>
-          <input
-            id="confirmPass"
-            name="confirmPass"
-            type="password"
-            value={inputs.confirmPass}
-            onInput={handleChange}
-          />
-          <br />
-        </div>
-        <div>
-          <label for="address">Address</label>
-          <input
-            id="address"
-            name="address"
-            value={inputs.address}
-            onInput={handleChange}
-          />
-          <br />
-        </div>
-
-        <input type="submit" value="submit" />
-      </form> */}
     </div>
   );
 };
