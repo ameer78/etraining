@@ -1,30 +1,53 @@
 import React, { createContext, useState } from "react";
 import "./App.css";
-import LoginForm from "./Components/Form/LoginForm/LoginForm";
-import RegistrationForm from "./Components/Form/RegistrationForm/RegistrationForm";
-import Footer from "./Components/Footer/Footer";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import About from "./Components/About";
+import Contact from "./Components/Contact";
+import Home from "./Components/Home/Home";
+import Team from "./Components/Teams/Team";
+import Teams from "./Components/Teams/Teams";
+import AuthProvider from "./AuthProvider";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import ProtectedRoute from "./Components/ProtectedRoute";
 
-export const AppContext = createContext();
+export const AuthContext = createContext(null);
 const App = () => {
   const [name, setName] = useState("Ameer");
   const [points, setPoints] = useState([1, 2, 3, 5, 6, 7]);
   return (
-    <AppContext.Provider
-      value={{
-        name,
-        setName,
-        points,
-        setPoints,
-      }}
-    >
-      <div className="login-page">
-       <RegistrationForm />
-       <LoginForm />
-      </div>
+    <AuthProvider>
       <div>
-        <Footer />
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <Link to="/teams">Teams</Link>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </AppContext.Provider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="contact" element={<Contact />} />
+        
+       
+         <Route path="dashboard" element={ <ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        
+        <Route path="teams" element={<ProtectedRoute><Teams /></ProtectedRoute>} />
+        <Route path="teams/:teamId" element={<ProtectedRoute><Team /></ProtectedRoute>} />
+      </Routes>
+    </AuthProvider>
   );
 };
 
