@@ -6,7 +6,6 @@ const Home = () => {
     <div>
     {token && <button onClick={() => handleLogout()}>Logout</button>}
     {!token && <button onClick={() => handleLogin()}>Login</button>}
-    
     <h1>Home Page</h1>
     </div>
   );

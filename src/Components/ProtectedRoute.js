@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Route, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../authhook";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({children}) => {
   const { token } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
@@ -11,7 +11,8 @@ const ProtectedRoute = ({ children }) => {
       navigate("/");
     }
   }, [token]);
-  return  children;
+
+  return children;
 };
 
 

@@ -24,7 +24,8 @@ const AuthProvider = ({ children }) => {
         handleLogin,
         handleLogout,
       }}
-    > {children}</AuthContext.Provider>
+    > {children}
+    </AuthContext.Provider>
   );
 };
 

@@ -7,3 +7,9 @@
 .login-page > div:first-child{
   margin-right: 20px;
 }
+
+.d-flex{
+  display: flex;
+  background-color: gray;
+  justify-content: space-between;
+}
