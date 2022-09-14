@@ -13,13 +13,18 @@ import Navigation from "./Components/Navigation";
 import { Provider } from "react-redux";
 import store from "./store/store"
 import ReduxCounter from "./Components/ReduxCounter";
-
+import ToDoList from "./Components/ToDoList";
+import ToDoListWithRedux from "./Components/ToDoListWithRedux";
+import 'bootstrap/dist/css/bootstrap.min.css'
 export const AuthContext = createContext();
 const App = () => {
   const [name, setName] = useState("Ameer");
   const [points, setPoints] = useState([1, 2, 3, 5, 6, 7]);
   return (
-    <Provider store={store} ><ReduxCounter /></Provider>
+    <Provider store={store} >
+      {/* <ReduxCounter /> */}
+      <ToDoListWithRedux />
+    </Provider>
   );
 };
 
