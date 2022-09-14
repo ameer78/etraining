@@ -4,13 +4,13 @@ import { addToDo, updateToDo, deleteTodo } from "../slices/todoSlice";
 import Table from "react-bootstrap/Table";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 
 const ToDoListWithRedux = () => {
   const [addedItem, setAddedItem] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
   const toDoList = useSelector((state) => state.todo.todoList);
-
   const [show, setShow] = useState(false);
   const [currentId, setCurrentId] = useState("");
   const [currentDesc, setCurrentDesc] = useState("");
@@ -18,17 +18,19 @@ const ToDoListWithRedux = () => {
 
   const handleClose = () => setShow(false);
   const handleUpdate = () => {
-    dispatch(updateToDo({
+    dispatch(
+      updateToDo({
         description: currentDesc,
         id: currentId,
-        status: currentStatus
-    }))
+        status: currentStatus,
+      })
+    );
     setShow(false);
   };
   const handleShow = (item) => {
     setCurrentId(item.id);
-    setCurrentDesc(item.description)
-    setCurrentStatus(item.status)
+    setCurrentDesc(item.description);
+    setCurrentStatus(item.status);
     setShow(true);
   };
   return (
@@ -37,6 +39,12 @@ const ToDoListWithRedux = () => {
         type="text"
         value={addedItem}
         onInput={(e) => setAddedItem(e.target.value)}
+      />
+      <input
+        type="text"
+        value={searchTerm}
+        placeholder="search"
+        onInput={(e) => setSearchTerm(e.target.value)}
       />
       <button
         onClick={() =>
@@ -62,24 +70,26 @@ const ToDoListWithRedux = () => {
         </thead>
         <tbody>
           {toDoList &&
-            toDoList.map((item) => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.description}</td>
-                <td>{item.status}</td>
-                <td>
-                  <button onClick={() => dispatch(deleteTodo(item.id))}>
-                    delete
-                  </button>
-                </td>
-                <td>
-                  {" "}
-                  <Button variant="primary" onClick={() => handleShow(item)}>
-                    Update
-                  </Button>
-                </td>
-              </tr>
-            ))}
+            toDoList
+              .filter((item) => item.description.includes(searchTerm))
+              .map((item) => (
+                <tr key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.description}</td>
+                  <td>{item.status}</td>
+                  <td>
+                    <button onClick={() => dispatch(deleteTodo(item.id))}>
+                      delete
+                    </button>
+                  </td>
+                  <td>
+                    {" "}
+                    <Button variant="primary" onClick={() => handleShow(item)}>
+                      Update
+                    </Button>
+                  </td>
+                </tr>
+              ))}
         </tbody>
       </Table>
 
