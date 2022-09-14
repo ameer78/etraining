@@ -14,15 +14,15 @@ export const toDoSlice = createSlice({
       state.todoList = [action.payload, ...state.todoList];
     },
     updateToDo: (state, action) => {
-        state.todoList = state.todoList.map((item, index) => {
-            if(index === action.index){
-                item = {...action.data, ...item}
+        state.todoList = state.todoList.map((item) => {
+            if(item.id === action.payload.id){
+                item = {...item, ...action.payload}
             }
             return item;
         })
     },
-    deleteTodo: state => {
-      state.todoList.pop();
+    deleteTodo: (state, action) => {
+      state.todoList = state.todoList.filter((item)=> item.id !== action.payload)
     }
   }
 })
