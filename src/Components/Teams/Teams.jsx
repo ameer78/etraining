@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import UseProtectedRoute from "../ProtectedRoute";
 
 const teams = [
     {
@@ -21,4 +22,5 @@ const Teams = () => {
   </div>))
 };
 
+// export default UseProtectedRoute(Teams)
 export default Teams

@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
 import Home from "./Components/Home/Home";
@@ -9,43 +9,23 @@ import Teams from "./Components/Teams/Teams";
 import AuthProvider from "./AuthProvider";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import ProtectedRoute from "./Components/ProtectedRoute";
+import Navigation from "./Components/Navigation";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext();
 const App = () => {
   const [name, setName] = useState("Ameer");
   const [points, setPoints] = useState([1, 2, 3, 5, 6, 7]);
   return (
     <AuthProvider>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-            <li>
-              <Link to="/teams">Teams</Link>
-            </li>
-          </ul>
-        </nav>
+      <Navigation />
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="contact" element={<Contact />} />
-        
-       
-         <Route path="dashboard" element={ <ProtectedRoute><Dashboard /></ProtectedRoute>} />
-        
-        <Route path="teams" element={<ProtectedRoute><Teams /></ProtectedRoute>} />
-        <Route path="teams/:teamId" element={<ProtectedRoute><Team /></ProtectedRoute>} />
+        <Route path="dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>} />
+        <Route path="teams" element={<Teams />} />
+        <Route path="teams/:teamId" element={<Team />} />
       </Routes>
     </AuthProvider>
   );
