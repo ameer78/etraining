@@ -23,9 +23,17 @@ const App = () => {
   const [points, setPoints] = useState([1, 2, 3, 5, 6, 7]);
   return (
     <Provider store={store} >
-      {/* <ReduxCounter /> */}
-      {/* <ToDoListWithRedux /> */}
-      <LoginForm />
+      <div>
+      <Navigation />
+      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="contact" element={<Contact />} />
+        {/* <Route path="dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>} /> */}
+        <Route path="teams" element={<Teams />} />
+        <Route path="teams/:teamId" element={<Team />} />
+      </Routes>
+
     </Provider>
   );
 };
@@ -33,15 +41,3 @@ const App = () => {
 // Passed the originalcomponent
 // export default EnhancedComponent(App);
 export default App;
-  /*<AuthProvider>
-      <div>
-      <Navigation />
-      </div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>} />
-        <Route path="teams" element={<Teams />} />
-        <Route path="teams/:teamId" element={<Team />} />
-      </Routes>
-    </AuthProvider> */
