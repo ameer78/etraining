@@ -20,7 +20,7 @@ const login = async (email, password) => {
   if (data.token) {
     localStorage.setItem("user", JSON.stringify(data.user));
   }
-  return response.data;
+  return data;
 };
 
 const logout = () => {

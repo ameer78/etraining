@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Route, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../authhook";
 
 const ProtectedRoute = ({children}) => {
-  const { token } = useAuth();
+  const { isLoggedIn} = useSelector((state) => state.auth);
+
   const navigate = useNavigate();
   useEffect(() => {
-    if (!token) {
-      console.log(token);
+    if (!isLoggedIn) {
+      console.log(isLoggedIn);
       navigate("/");
     }
-  }, [token]);
+  }, [isLoggedIn]);
 
   return children;
 };

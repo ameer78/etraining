@@ -1,15 +1,11 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import UseProtectedRoute from "../ProtectedRoute";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
 
-    return (
-      <div>
-        <h1>Dashboard Page (Protected)</h1>
-      </div>
-    );
-  };
-  
-  export default Dashboard;
-  
+  return (
+    <div>
+      <h1>Dashboard Page (Protected)</h1>
+    </div>
+  );
+};
+export default Dashboard;

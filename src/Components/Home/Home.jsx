@@ -4,7 +4,6 @@ import LoginForm from "../Form/LoginForm/LoginForm";
 
 const Home = () => {
   const { isLoggedIn, user } = useSelector((state) => state.auth);
-  const { message } = useSelector((state) => state.message);
   return (
     <div>
     <h1>Home Page</h1>
