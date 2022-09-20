@@ -16,6 +16,7 @@ import ReduxCounter from "./Components/ReduxCounter";
 import ToDoList from "./Components/ToDoList";
 import ToDoListWithRedux from "./Components/ToDoListWithRedux";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import LoginForm from "./Components/Form/LoginForm/LoginForm";
 export const AuthContext = createContext();
 const App = () => {
   const [name, setName] = useState("Ameer");
@@ -23,7 +24,8 @@ const App = () => {
   return (
     <Provider store={store} >
       {/* <ReduxCounter /> */}
-      <ToDoListWithRedux />
+      {/* <ToDoListWithRedux /> */}
+      <LoginForm />
     </Provider>
   );
 };
