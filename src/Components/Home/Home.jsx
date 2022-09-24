@@ -23,7 +23,7 @@ const Home = () => {
               </Button>
             </div>
           ) : (
-            <RegistrationForm />
+            <RegistrationForm setNoAccount={setNoAccount} />
           )}
         </div>
       )}

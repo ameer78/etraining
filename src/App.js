@@ -33,7 +33,7 @@ const App = () => {
         <Route path="teams" element={<ProtectedRoute><Teams /></ProtectedRoute>} />
         <Route path="teams/:teamId" element={<ProtectedRoute><Team /></ProtectedRoute>} />
       </Routes>
-
+      
     </Provider>
   );
 };

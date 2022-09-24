@@ -2,8 +2,35 @@ import { useState } from "react";
 import { Formik } from "formik";
 import "../css/Form.css";
 import { RegistrationSchema } from "../validation/FormSchema";
+import { register } from "../../../slices/auth";
+import { useDispatch } from "react-redux";
+
+
 
 const RegistrationForm = (props) => {
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+
+  const handleRegister = (formValue) => {
+    setLoading(true);
+    const { email, password, confirmPassword } = formValue;
+    dispatch(register({ email, password, confirmPassword }))
+      .unwrap()
+      .then(() => {
+        // props.history.push("/profile");
+        setLoading(false);
+        alert("Registered successfully");
+        // window.location.reload();
+        if(props.setNoAccount){
+          props.setNoAccount(false);
+        }
+      })
+      .catch(() => {
+        setLoading(false);
+        alert("Invalid Data");
+      });
+  };
+
   return (
     <Formik
       initialValues={{
@@ -12,14 +39,10 @@ const RegistrationForm = (props) => {
         email: "",
         password: "",
         username: "",
+        confirmPassword: "",
       }}
       validationSchema={RegistrationSchema}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
+      onSubmit={handleRegister}
     >
       {({
         values,
@@ -99,6 +122,22 @@ const RegistrationForm = (props) => {
           </div>
 
           <div className="input-form">
+            <label for="confirmPassword">Password</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.confirmPassword}
+            />
+            <div className="error-wrapper">
+              <span className="error">
+                {errors.confirmPassword && touched.confirmPassword && errors.confirmPassword}
+              </span>
+            </div>
+          </div>
+
+          <div className="input-form">
             <label for="email">Email</label>
             <input
               type="email"
@@ -114,23 +153,8 @@ const RegistrationForm = (props) => {
             </div>
           </div>
 
-          <div className="input-form">
-            <label for="mobile">Mobile No</label>
-            <input
-              type="text"
-              name="mobile"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.mobile}
-            />
-            <div className="error-wrapper">
-              <span className="error">
-                {errors.mobile && touched.mobile && errors.mobile}
-              </span>
-            </div>
-          </div>
 
-          <button type="submit" className="submit-btn" disabled={isSubmitting}>
+          <button type="submit" className="submit-btn" >
             Register
           </button>
         </form>
